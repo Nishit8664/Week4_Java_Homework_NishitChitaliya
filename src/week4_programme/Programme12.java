@@ -8,25 +8,27 @@ package week4_programme;
  */
 public class Programme12 {
     public static void main(String[] args) {
-        isPrime();                                      //Method calling
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Enter number");
+        int number = scanner.nextInt();
+        isPrime(number);
+        scanner.close();
     }
 
-    public static void isPrime() {                      //method
-        int number = 1;
-        int primeUpto = 100;
-        while (number < primeUpto) {
-            boolean flag = false;
-            for (int i = 2; i <= number / 2; ++i) {
-                if (number % i == 0) {                       // condition for nonprime number
-                    flag = true;
-                    break;
-                }
+    public static void isPrime(int number) {
+        int i = 2;
+        boolean flag = false;
+        while (i <= number / 2) {
+            if (number % i == 0) {  // condition for nonprime number
+                flag = true;
+                break;
             }
-            if (!flag && number != 0 && number != 1)        //condition for prime number
-                System.out.print(number + ", ");
-            ++number;
+            ++i;
         }
-        System.out.print("...are the prime numbers.");
+        if (!flag)
+            System.out.println(number + " is a prime number.");
+        else
+            System.out.println(number + " is not a prime number.");
     }
 }
 
